@@ -22,6 +22,11 @@ namespace CabInvoiceGenerator
                     COST_PER_TIME = 1;
                     MIN_FARE = 5;
                 }
+                if (rideType.Equals(RideType.PREMIUM)) {
+                    MIN_PER_KM_COST = 15;
+                    COST_PER_TIME = 2;
+                    MIN_FARE = 20;
+                }
             }
             catch (CabInvoiceCustomException) {
                 throw new CabInvoiceCustomException("Invalid ride",CabInvoiceCustomException.Exception.INVALID_RIDE_TYPE);
