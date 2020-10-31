@@ -47,17 +47,19 @@ namespace CabInvoiceGenerator
         }
         public InvoiceSummary CalculateFare(Ride[] rides) {
             double totalFare = 0;
+            double averageFare = 0;
             try {
                 foreach (Ride ride in rides) {
                     totalFare = this.CalculateFare(ride.distance, ride.time);
                 }
+                averageFare = totalFare / rides.Length;
             }
             catch (CabInvoiceCustomException)
             {
                 if (rides == null)
                     throw new CabInvoiceCustomException("Null rides", CabInvoiceCustomException.Exception.NULL_RIDES);
             }
-            return new InvoiceSummary(rides.Length, totalFare);
+            return new InvoiceSummary(rides.Length, totalFare,averageFare);
         }
     }
 }
