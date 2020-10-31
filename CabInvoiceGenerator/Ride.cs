@@ -9,10 +9,10 @@ namespace CabInvoiceGenerator
         public double distance;
         public int time;
 
-        public Ride(double distance, int time)
+        public Ride(string distance, string time)
         {
-            this.distance = distance;
-            this.time = time;
+            this.distance = Convert.ToDouble(distance);
+            this.time = Convert.ToInt32(time);
         }
     }
 }

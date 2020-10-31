@@ -35,10 +35,17 @@ namespace MSTestForInvoice
         //TC 3
         [TestMethod]
         public void GivenMultipleRidesreturnsTotalFareAndAverageFare() {
-            Ride[] rides = { new Ride(2.0, 30), new Ride(1.0, 40) };
+            Ride[] rides = { new Ride("2.0", "30"), new Ride("1.0", "40") };
                 InvoiceSummary actual = invoice.CalculateFare(rides);
                InvoiceSummary expected = new InvoiceSummary(2, 50.0,25.0);
                Assert.AreEqual(expected, actual);
+        }
+        //TC 4
+        [TestMethod]
+        public void GivenUserIDGetsTotalFare() {
+            double actual = invoice.GetUserInvoice("1");
+            double expected = 50.0;
+            Assert.AreEqual(expected, actual);
         }
     }
 }

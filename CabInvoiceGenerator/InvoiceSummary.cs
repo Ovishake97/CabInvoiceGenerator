@@ -16,6 +16,7 @@ namespace CabInvoiceGenerator
             this.totalFare = totalFare;
             this.averageFare = averageFare;
         }
+        /// Creating method to override the equals method
         public override bool Equals(object obj)
         {
             if (obj == null)
