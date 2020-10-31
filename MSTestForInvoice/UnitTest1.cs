@@ -47,5 +47,15 @@ namespace MSTestForInvoice
             double expected = 50.0;
             Assert.AreEqual(expected, actual);
         }
+        //TC 5
+        [TestMethod]
+        public void GetTotalFareForPremiumRides() {
+            invoice = new InvoiceGenerator(RideType.PREMIUM);
+            double distance = 2.0;
+            int time = 10;
+            double fareActual = invoice.CalculateFare(distance, time);
+            double fareExpected = 50;
+            Assert.AreEqual(fareExpected, fareActual);
+        }
     }
 }
