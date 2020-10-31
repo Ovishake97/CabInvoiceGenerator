@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace CabInvoiceGenerator
@@ -61,5 +63,21 @@ namespace CabInvoiceGenerator
             }
             return new InvoiceSummary(rides.Length, totalFare,averageFare);
         }
+        public double GetUserInvoice(string userId) {
+            double distance;
+            int time;
+            double totalFare=0;
+            Dictionary<string, Ride> rideRepos = RideRepository.GetRideList();
+            foreach (var element in rideRepos) {
+                if (userId == element.Key) {
+                    distance = element.Value.distance;
+                    time = element.Value.time;
+                    totalFare = this.CalculateFare(distance, time);
+                }
+            }
+            return totalFare;
+        }
+        
     }
 }
+
